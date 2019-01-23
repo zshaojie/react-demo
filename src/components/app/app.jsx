@@ -6,10 +6,16 @@ export default class App extends Component {
 
   state = {
     comments: [
-      { useranme: 'zhangsan', comment: '搭好打火锅' },
-      { useranme: '李四', comment: '大港撒干哈' },
-      { useranme: '王大概', comment: '聚隆科技案例是个啥' }
+      { username: 'zhangsan', content: '搭好打火锅' },
+      { username: '李四', content: '大港撒干哈' },
+      { username: '王大概', content: '聚隆科技案例是个啥' }
     ]
+  }
+
+  addComment = (comment) => {
+    const { comments } = this.state
+    comments.unshift(comment)
+    this.setState({ comments })
   }
 
   render () {
@@ -27,7 +33,7 @@ export default class App extends Component {
           </div>
         </header>
         <div className="container">
-          <CommentAdd />
+          <CommentAdd addComment={this.addComment} />
           <CommentList comments={comments} />
         </div>
       </div>
