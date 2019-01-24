@@ -12,9 +12,21 @@ export default class App extends Component {
     ]
   }
 
+  /**
+   * 添加评论
+   */
   addComment = (comment) => {
     const { comments } = this.state
     comments.unshift(comment)
+    this.setState({ comments })
+  }
+
+  /**
+   * 删除指定评论
+   */
+  deleteComment = (index) => {
+    const { comments } = this.state
+    comments.splice(index, 1)
     this.setState({ comments })
   }
 
@@ -34,7 +46,7 @@ export default class App extends Component {
         </header>
         <div className="container">
           <CommentAdd addComment={this.addComment} />
-          <CommentList comments={comments} />
+          <CommentList comments={comments} deleteComment={this.deleteComment} />
         </div>
       </div>
     )

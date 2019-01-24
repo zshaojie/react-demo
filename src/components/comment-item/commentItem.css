@@ -13,7 +13,7 @@ li {
   text-align: center;
 }
 
-.handle a {
+.handle div {
   display: block;
   text-decoration: none;
 }
